@@ -61,14 +61,13 @@ while True:
         janela1.hide() #esconde a primeira tela
     #apertou o botão não
     if window == janela1 and event == 'Não':
-        janela5 = tela_cnhnao() #pergunta qual ano tu renovou
+        janela4 = tela_cnhnao() #pergunta qual ano tu renovou
         janela1.hide() #esconde a primeira tela
     #quando queremos ir para a janela anterior
     if window == janela2 and event == 'Voltar':
         janela2.hide()
         janela1.un_hide()
     if window == janela4 and event == 'Retornar':
-        print('sei n')
         janela4.hide()
         janela1.un_hide()
     #Ir para a verificação de um ano válido do botão sim
@@ -83,9 +82,9 @@ while True:
     #Ir para a verificação de um ano valido do botão não
     if window == janela4 and event == 'Continuar':
         ano = int(values['tempo'])
-        if 2023 > ano > 2011:
-            janela2.hide()
+        if ano >= 2012 and ano < 2023:
             janela5 = tela_idadenao()
+            janela4.hide()
         else:
             sg.popup('Coloque um ano válido: de 2012 ate 2022')
             ano = 0
@@ -93,7 +92,7 @@ while True:
     # verificação de quantos anos precisa renovar a carteira, botão não evento final
     if window == janela5 and event == 'Fim':
         idade = int(values['agen'])
-        if 27 < idade < 49:
+        if 27 < idade <= 49:
             valor1 = ano + 10
             if valor1 < 2022:
                 sg.popup('Você deverá tem que renovar a sua habilitação imedatiamente, '
@@ -120,7 +119,7 @@ while True:
     #verificação de quantos anos precisa renovar a carteira, botão sim evento final
     if window == janela3 and event == 'Fim':
         idade = int(values['age'])
-        if 17 < idade < 49:
+        if 17 < idade < 50:
             valor1 = ano + 10
             if valor1 == 2022:
                 sg.popup('Fique atento! Esse ano você precisará renovar sua carteira de motorista!')
